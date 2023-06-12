@@ -27,7 +27,6 @@ type PokemonObj =
   | Record<Pokemon["name"], never>;
 
 const TableLayoutInfinityLoading: React.FC = () => {
-  const scrollableDivRef = useRef<HTMLDivElement | null>(null);
   const tableRef = useRef<HTMLTableElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -162,7 +161,7 @@ const TableLayoutInfinityLoading: React.FC = () => {
 
   return (
     <Contents>
-      <TableWrapper ref={scrollableDivRef} onScroll={onScroll}>
+      <TableWrapper onScroll={onScroll}>
         <Table ref={tableRef}>
           <Thead>
             <Tr className="TrTh">
