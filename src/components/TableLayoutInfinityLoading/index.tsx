@@ -305,6 +305,9 @@ const Tr = styled.tr`
   &.TrTd:nth-of-type(-n + 9) {
     border-bottom: solid 1px #ccc;
   }
+  &.TrTd:not(:last-of-type) {
+    border-bottom: solid 1px #ccc;
+  }
   &:nth-of-type(even) {
     background: #fafafa;
   }
