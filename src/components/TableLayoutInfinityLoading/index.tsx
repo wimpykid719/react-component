@@ -300,7 +300,11 @@ const NoPokemon = styled.p`
 
 const Tr = styled.tr`
   &.TrTh {
-    border-bottom: solid 1px #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #eee;
+    box-shadow: inset 0 -1px 0 #ccc;
   }
   &.TrTd:nth-of-type(-n + 9) {
     border-bottom: solid 1px #ccc;
@@ -319,11 +323,6 @@ const SerachedTr = styled(Tr)`
 
 const Th = styled.th`
   padding: 16px 14px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #eee;
-  border-bottom: solid 1px #ccc;
   :first-of-type {
     width: 32%;
   }
