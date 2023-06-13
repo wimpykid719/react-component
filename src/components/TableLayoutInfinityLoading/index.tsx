@@ -182,7 +182,7 @@ const TableLayoutInfinityLoading: React.FC = () => {
               </Tr>
             ) : (
               pokemonNames.map((name) => (
-                <SerachedTr
+                <FetchedTr
                   className="TrTd"
                   key={name}
                   onClick={
@@ -198,7 +198,7 @@ const TableLayoutInfinityLoading: React.FC = () => {
                     ></Checkbox>
                   </Td>
                   <Td>{pokemonObj[name]?.url}</Td>
-                </SerachedTr>
+                </FetchedTr>
               ))
             )}
             {!isLoading && (
@@ -315,7 +315,7 @@ const Tr = styled.tr`
   }
 `;
 
-const SerachedTr = styled(Tr)`
+const FetchedTr = styled(Tr)`
   cursor: pointer;
 `;
 
