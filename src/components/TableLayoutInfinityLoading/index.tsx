@@ -30,7 +30,7 @@ const TableLayoutInfinityLoading: React.FC = () => {
   const tableRef = useRef<HTMLTableElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
-  const [url, setUrl] = useState<string>(INITIAL_PAGE_URL);
+  const [url, setUrl] = useState<string | undefined>(INITIAL_PAGE_URL);
   const [checkedPokemons, setCheckedPokemons] = useState<PokemonResults[]>([]);
   const [pokemonNames, setPokemonNames] = useState<Pokemon["name"][]>([]);
   const [pokemonObj, setPokemonObj] = useState<PokemonObj>({});
@@ -39,14 +39,13 @@ const TableLayoutInfinityLoading: React.FC = () => {
     execFetchInitialPokemon();
   }, []);
 
-  const fetchPokemon = async (url: string | null) => {
+  const fetchPokemon = async (url: string | undefined) => {
     try {
       if (!url) return;
       const response = await fetch(url);
       const data: PokemonFetchedData = await response.json();
-      if (data.next) {
-        setUrl(data.next);
-      }
+      const nextUrl = data.next || undefined;
+      setUrl(nextUrl);
       setPokemonObj((prePokemonObj) => {
         const newPokemonObj = pokemonSelectCheckedObj(
           data.results,
